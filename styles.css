@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(255, 182, 215);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.website-name {
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #333; 
+    margin-top: 40px;
+    margin-bottom: 60px;
+    margin-left: 10px; 
+    
+}
+.logo img {
+    height: 100px; 
+    width:100px;/* Adjust height as needed */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* dark grey */
+    font-weight: bold;
+}
+
+.hero {
+    background-image: url('background1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Adjust height as needed */
+    overflow-y: scroll;
+}
+.hero1 {
+    background-color: rgb(213, 131, 145,0.7);
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Adjust height as needed */
+    overflow-y: scroll;
+}
+
+.hero-content {
+    background-color: rgba(213 131 145, 0.7); /* light pink with 0.7 transparency */
+    color: #ffffff; /* white */
+    padding: 50px;
+    
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.adoption-steps {
+    background-color:rgba(244, 163, 198, 0.84); /* pink with 0.84 transparency */
+    color: #333; /* dark grey */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.adoption-steps h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.adoption-steps p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.adoption-steps a {
+    color: #fff; /* white */
+    background-color: #333; /* dark grey */
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.adoption-steps a:hover {
+    background-color: #555; /* darker grey on hover */
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.step {
+    flex: 0 1 calc(20% - 40px); /* Adjust width as needed */
+    background-color: rgba(244, 163, 198, 0.84); /* pink with 0.84 transparency */
+    color: #333; /* dark grey */
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.step h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.adopt-through-website {
+    background-color: rgba(244, 163, 198, 0.84); /* pink with 0.84 transparency */
+    color: #333; /* dark grey */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.adopt-through-website h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.adopt-through-website p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.search-container input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* light grey */
+    margin-right: 10px;
+}
+
+.search-container button {
+    background-color: rgba(244, 163, 198, 0.84); /* pink with 0.84 transparency */
+    color: #fff; /* white */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #ff6b9c; /* darker pink on hover */
+}
+
+.filter-btn {
+    background-color: #333; /* dark grey */
+    margin-left: 10px;
+}
+
+.filter-btn:hover {
+    background-color: #555; /* darker grey on hover */
+}
+
+.filter-btn,
+.search-container button {
+    display: inline-block;
+}
+
+
+footer {
+    background-color: #333; /* dark grey */
+    color: #fff; /* white */
+    padding: 20px;
+    text-align: center;
+}
+

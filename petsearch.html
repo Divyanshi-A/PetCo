@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Pets | Pet Adoption Organization</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       .card-container {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: bisque;
+    flex: 0 1 calc(33.333% - 20px); /* Adjust the number of cards in a row here */
+    max-width: 300px; /* Maximum width of each card */
+    border: 2px solid #ccc; /* light grey */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Adjust the scale of the hovered card */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+}
+
+.card-content p {
+    margin-bottom: 0;
+}
+
+.card-description {
+    display: none; /* Initially hide the description */
+    padding: 10px;
+}
+
+.explore-button {
+    display: none; /* Initially hide the explore button */
+    background-color: #333; /* dark grey */
+    color: #fff; /* white */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card:hover .card-description,
+.card:hover .explore-button {
+    display: block; /* Show description and explore button when card is hovered */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Pet Adoption Organization Logo">
+            </div>
+            <div class="website-name">PET CARE</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="process.html">Adoption Process</a></li>
+                    <li><a href="petsearch.html">Available Pets</a></li>
+                    <li><a href="#f2">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" placeholder="Search pets...">
+            <button class="filter-btn">Filter</button>
+            <button class="reset-btn">Reset</button>
+            <div class="filter-options">
+                <label for="pet-type">Type:</label>
+                <select id="pet-type">
+                    <option value="all">All</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                </select>
+                <label for="pet-breed">Breed:</label>
+                <select id="pet-breed">
+                    <option value="all">All</option>     
+                </select>
+            </div>
+
+        </div>
+        
+        <div class="card-container"></div>
+        <!-- Content related to available pets can be added here -->
+    </main>
+    <footer id="f2">
+        <h3>Contact Us</h3>
+        <div>
+            <div>
+                
+                <p>If you have any questions or inquiries, feel free to reach out to us:</p>
+                <ul style="list-style-position: inside; padding-left: 0;">
+                    <li style="list-style: none; margin-left: 0;">Email: info@petcare.org</li>
+                    <li style="list-style: none; margin-left: 0;">Phone: +1 (123) 456-7890</li>
+                    <li style="list-style: none; margin-left: 0;">Address: 123 Pet Avenue, Cityville, State, Country</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="http://localhost/abc/getPets.php"></script>
+    <script>
+        $(document).ready(function() {
+            // Data for pets (example)
+            
+
+  // Function to populate breed options based on selected type
+  function populateBreeds(type) {
+        var breeds = [];
+
+        // Filter pets by type
+        var filteredPets = pets.filter(function(pet) {
+            return pet.type === type || type === 'all';
+        });
+
+        // Get unique breeds
+        filteredPets.forEach(function(pet) {
+            if (!breeds.includes(pet.breed)) {
+                breeds.push(pet.breed);
+            }
+        });
+
+        // Populate breed select options
+        var breedSelect = $('#pet-breed');
+        breedSelect.empty();
+        breeds.forEach(function(breed) {
+            breedSelect.append('<option value="' + breed + '">' + breed + '</option>');
+        });
+    }
+    populateBreeds('all');
+
+    // Event listener for pet type change
+    $('#pet-type').change(function() {
+        var selectedType = $(this).val();
+        populateBreeds(selectedType);
+    });
+// Function to display pets based on selected filters
+function displayPets(type, breed) {
+            // Clear existing pet cards
+            $('.card-container').empty();
+
+            // Filter pets based on selected type and breed
+            var filteredPets = pets.filter(function(pet) {
+                var typeMatch = (type === 'all' || pet.type === type);
+                var breedMatch = (breed === 'all' || pet.breed === breed);
+                return typeMatch && breedMatch;
+            });
+
+            // Display filtered pets
+            filteredPets.forEach(function(pet) {
+                var card = '<div class="card">' +
+                    '<img src="' + pet.image + '" alt="Pet Image">' +
+                    '<div class="card-content">' +
+                    '<h3>' + pet.name + '</h3>' +
+                    '<p>Age: ' + pet.age + '<br>Breed: ' + pet.breed + '<br>Type: ' + pet.type + '</p>' +
+                    '<p class="card-description">' + pet.description + '</p>' +
+                    '<button class="explore-button">Explore</button>' +
+                    '</div>' +
+                    '</div>';
+
+                $('.card-container').append(card);
+            });
+        }
+
+        // Event listener for apply filter button
+        $('.filter-btn').click(function() {
+            var type = $('#pet-type').val();
+            var breed = $('#pet-breed').val();
+            displayPets(type, breed);
+        });
+        $('.reset-btn').click(function() {
+            resetFilters(); // Reset filters
+            displayPets('all', 'all'); // Display all pets
+        });
+
+        // Function to reset filters to default values
+        function resetFilters() {
+            $('#pet-type').val('all');
+            $('#pet-breed').empty().append('<option value="all">All</option>'); // Reset breed dropdown
+            populateBreeds('all'); // Populate breeds with all breeds
+        }
+    
+            // Create cards for each pet
+            pets.forEach(function(pet) {
+                var card = '<div class="card">' +
+                                '<img src="' + pet.image + '" alt="Pet Image">' +
+                                '<div class="card-content">' +
+                                    '<h3>' + pet.name + '</h3>' +
+                                    '<p>Age: ' + pet.age + '<br>Breed: ' + pet.breed + '<br>Type: ' + pet.type + '</p>' +
+                                    '<p class="card-description">' + pet.description + '</p>' +
+                                    '<button class="explore-button">Explore</button>' +
+                                '</div>' +
+                            '</div>';
+
+                $('.card-container').append(card);
+            });
+        }
+        
+    );
+    </script>
+</body>
+</html>
